@@ -1,0 +1,62 @@
+name: 'Install Rebol'
+author: 'Oldes'
+description: 'GitHub Action to install Rebol'
+
+inputs:
+  version:
+    description: 'Rebol version to download'
+    required: true
+    default: '3.5.3'
+  product:
+    description: 'Rebol product to download (base, core or bulk)'
+    required: true
+    default: 'core'
+  arch:
+    description: 'Rebol architecture (x32 or x64)'
+    required: true
+    default: 'x64'
+
+outputs:
+  REBOL3:
+    description: "Path to Rebol executable"
+    value: ${{ steps.download-rebol.outputs.REBOL3 }}
+runs:
+  using: "composite"
+  steps:
+    - id: download-rebol
+      name: Downloading Rebol
+      shell: bash
+      env:
+        URL: https://github.com/Siskin-framework/Rebol/releases/download
+        VERSION: ${{ inputs.version }}
+        PRODUCT: ${{ inputs.product }}
+        FILEBASE: rebol3-${{ inputs.product }}-${{ inputs.arch }}
+      run: |
+        echo Expected version: $VERSION
+        export DOWNLOAD_URL=$URL/$VERSION
+
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          export FILE=${FILEBASE}-libc-gcc
+          echo Dowloading: $DOWNLOAD_URL/${FILE}.gz
+          wget -q $DOWNLOAD_URL/${FILE}.gz
+          gunzip ./${FILE}.gz
+          mv ./${FILE} ./rebol3
+          chmod +x ./rebol3
+          echo "::set-output name=REBOL3::$(realpath rebol3)"
+
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          export FILE=${FILEBASE}-osx
+          echo Dowloading: $DOWNLOAD_URL/${FILE}.gz
+          wget -q $DOWNLOAD_URL/${FILE}.gz
+          gunzip ./${FILE}.gz
+          mv ./${FILE} ./rebol3
+          chmod +x ./rebol3
+          echo "::set-output name=REBOL3::$(echo $PWD/rebol3)"
+        
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          export FILE=${FILEBASE}-vs.exe
+          echo Downloading: $DOWNLOAD_URL/$FILE
+          curl -sSLJO $DOWNLOAD_URL/$FILE
+          mv ./$FILE ./rebol3.exe
+          echo "::set-output name=REBOL3::$(realpath rebol3.exe)"
+        fi
