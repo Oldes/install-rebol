@@ -2,6 +2,10 @@ name: 'Install Rebol'
 author: 'Oldes'
 description: 'GitHub Action to install Rebol'
 
+branding:
+  icon: 'download-cloud'  
+  color: 'red'
+
 inputs:
   version:
     description: 'Rebol version to download'
