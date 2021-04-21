@@ -45,3 +45,5 @@ jobs:
       run: ./rebol3 -v
       shell: bash
 ```
+
+Real life usage example can be seen for example at this [Build Rebol workflow](https://github.com/Siskin-framework/Builder/actions/runs/759470676/workflow).
