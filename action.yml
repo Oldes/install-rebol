@@ -40,7 +40,7 @@ runs:
         export DOWNLOAD_URL=$URL/$VERSION
 
         if [ "$RUNNER_OS" == "Linux" ]; then
-          export FILE=${FILEBASE}-libc-gcc
+          export FILE=${FILEBASE}-libc
           echo Dowloading: $DOWNLOAD_URL/${FILE}.gz
           wget -q $DOWNLOAD_URL/${FILE}.gz
           gunzip ./${FILE}.gz
