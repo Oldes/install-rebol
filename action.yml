@@ -31,7 +31,7 @@ runs:
       name: Downloading Rebol
       shell: bash
       env:
-        URL: https://github.com/Siskin-framework/Rebol/releases/download
+        URL: https://github.com/Oldes/Rebol3/releases/download
         VERSION: ${{ inputs.version }}
         PRODUCT: ${{ inputs.product }}
         FILEBASE: rebol3-${{ inputs.product }}
