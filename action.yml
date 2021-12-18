@@ -58,7 +58,7 @@ runs:
           echo "::set-output name=REBOL3::$(echo $PWD/rebol3)"
         
         elif [ "$RUNNER_OS" == "Windows" ]; then
-          export FILE=${FILEBASE}-windows-${{ inputs.arch }}
+          export FILE=${FILEBASE}-windows-${{ inputs.arch }}.exe
           echo Downloading: $DOWNLOAD_URL/$FILE
           curl -sSLJO $DOWNLOAD_URL/$FILE
           mv ./$FILE ./rebol3.exe
