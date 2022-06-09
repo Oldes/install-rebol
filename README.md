@@ -12,13 +12,13 @@ to a virtual machine of GitHub Actions.
 Include this in your workflow:
 
 ```yml
- - uses: oldes/install-rebol@v3.7.2
+ - uses: oldes/install-rebol@v3.8.0
 ```
 
 These inputs are allowed:
 
- - `version` -- an available Rebol release version (for example: `3.7.2`)
-   _Default:_ empty; installs Rebol version `3.7.2`.
+ - `version` -- an available Rebol release version (for example: `3.8.0`)
+   _Default:_ empty; installs Rebol version `3.8.0`.
  - `product` -- one of available product build types (`base`, `core` or `bulk`)
    _Default:_ empty; installs the `core` version.
 
@@ -40,7 +40,7 @@ jobs:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
     steps:
     - uses: actions/checkout@v2
-    - uses: oldes/install-rebol@v3.7.2
+    - uses: oldes/install-rebol@v3.8.0
     - name: Test Rebol
       run: ./rebol3 -v
       shell: bash
