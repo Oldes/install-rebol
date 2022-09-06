@@ -10,7 +10,7 @@ inputs:
   version:
     description: 'Rebol version to download'
     required: true
-    default: '3.9.0'
+    default: '3.10.0'
   product:
     description: 'Rebol product to download (base, core or bulk)'
     required: true
