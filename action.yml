@@ -16,7 +16,7 @@ inputs:
     required: true
     default: 'core'
   arch:
-    description: 'Rebol architecture (x32 or x64)'
+    description: 'Rebol architecture (x32, x64 or arm64)'
     required: true
     default: 'x64'
 
@@ -46,7 +46,7 @@ runs:
           gunzip ./${FILE}.gz
           mv ./${FILE} ./rebol3
           chmod +x ./rebol3
-          echo "::set-output name=REBOL3::$(realpath rebol3)"
+          echo "REBOL3=$(realpath rebol3)" >> $GITHUB_OUTPUT
 
         elif [ "$RUNNER_OS" == "macOS" ]; then
           export FILE=${FILEBASE}-macos-${{ inputs.arch }}
@@ -55,12 +55,12 @@ runs:
           gunzip ./${FILE}.gz
           mv ./${FILE} ./rebol3
           chmod +x ./rebol3
-          echo "::set-output name=REBOL3::$(echo $PWD/rebol3)"
+          echo "REBOL3=$(echo $PWD/rebol3)" >> $GITHUB_OUTPUT
         
         elif [ "$RUNNER_OS" == "Windows" ]; then
           export FILE=${FILEBASE}-windows-${{ inputs.arch }}.exe
           echo Downloading: $DOWNLOAD_URL/$FILE
           curl -sSLJO $DOWNLOAD_URL/$FILE
           mv ./$FILE ./rebol3.exe
-          echo "::set-output name=REBOL3::$(realpath rebol3.exe)"
+          echo "REBOL3=$(realpath rebol3.exe)" >> $GITHUB_OUTPUT
         fi
