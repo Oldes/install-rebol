@@ -1,3 +1,5 @@
+[![rebol](https://github.com/user-attachments/assets/9088597c-7018-49d5-a31d-81950288c945)](https://rebol.tech)
+
 [![Test Rebol installer](https://github.com/Oldes/install-rebol/actions/workflows/test.yml/badge.svg)](https://github.com/Oldes/install-rebol/actions/workflows/test.yml)
 
 # Rebol Install Action
