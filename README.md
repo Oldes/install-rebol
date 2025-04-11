@@ -1,5 +1,3 @@
-[![rebol](https://github.com/user-attachments/assets/9088597c-7018-49d5-a31d-81950288c945)](https://rebol.tech)
-
 [![Test Rebol installer](https://github.com/Oldes/install-rebol/actions/workflows/test.yml/badge.svg)](https://github.com/Oldes/install-rebol/actions/workflows/test.yml)
 
 # Rebol Install Action
@@ -14,13 +12,13 @@ to a virtual machine of GitHub Actions.
 Include this in your workflow:
 
 ```yml
- - uses: oldes/install-rebol@v3.18.0
+ - uses: oldes/install-rebol@v3.19.0
 ```
 
 These inputs are allowed:
 
- - `version` -- an available Rebol release version (for example: `3.18.0`)
-   _Default:_ empty; installs Rebol version `3.18.0`.
+ - `version` -- an available Rebol release version (for example: `3.19.0`)
+   _Default:_ empty; installs Rebol version `3.19.0`.
  - `product` -- one of available product build types (`base`, `core` or `bulk`)
    _Default:_ empty; installs the `core` version.
 
@@ -42,7 +40,7 @@ jobs:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
     steps:
     - uses: actions/checkout@v3
-    - uses: oldes/install-rebol@v3.18.0
+    - uses: oldes/install-rebol@v3.19.0
     - name: Test Rebol
       run: ./rebol3 -v
       shell: bash
